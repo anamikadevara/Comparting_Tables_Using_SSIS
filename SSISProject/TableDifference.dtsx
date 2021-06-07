@@ -1,0 +1,2497 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2021 11:21:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-ACAQJSUC"
+  DTS:CreatorName="LAPTOP-ACAQJSUC\devar"
+  DTS:DTSID="{40DE17AD-C088-48B7-BFD8-A78DA8871260}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{834A83B6-CD37-4E90-8E89-52283E7C3748}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-ACAQJSUC.AdventureWorks2019]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{0C1E84D9-A1E7-4B3D-A62B-DB440149535A}"
+      DTS:ObjectName="LAPTOP-ACAQJSUC.AdventureWorks2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-ACAQJSUC;Initial Catalog=AdventureWorks2019;Integrated Security=True;Application Name=SSIS-Package1-{0C1E84D9-A1E7-4B3D-A62B-DB440149535A}LAPTOP-ACAQJSUC.AdventureWorks2019;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-ACAQJSUC\MULTIDIMENSIONAL.AdventureWorks2019]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{7B18257F-6086-4AB9-A8A2-19B2BBFAB90E}"
+      DTS:ObjectName="LAPTOP-ACAQJSUC\MULTIDIMENSIONAL.AdventureWorks2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-ACAQJSUC\MULTIDIMENSIONAL;Initial Catalog=AdventureWorks2019;Integrated Security=True;Application Name=SSIS-Package1-{7B18257F-6086-4AB9-A8A2-19B2BBFAB90E}LAPTOP-ACAQJSUC\MULTIDIMENSIONAL.AdventureWorks2019;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{21C92F4B-3179-40C6-BD3A-9719250395C6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DescripancyTempDBMetaData"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-ACAQJSUC.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-ACAQJSUC.AdventureWorks2019]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_CATALOG]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_SCHEMA]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_NAME]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      cachedSortKeyPosition="4"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_COLUMN_NAME]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      cachedSortKeyPosition="5"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_DATA_TYPE]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      cachedSortKeyPosition="6"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      cachedSortKeyPosition="7"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      cachedSortKeyPosition="8"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_ORDINAL_POSITION]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_CATALOG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_SCHEMA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_COLUMN_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_DATA_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTRATINT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTARINT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      name="temp_ORDINAL_POSITION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      cachedSortKeyPosition="7"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      cachedSortKeyPosition="8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_CATALOG (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_SCHEMA (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_TABLE_NAME (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_COLUMN_NAME (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_DATA_TYPE (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_CONSTRATINT_NAME (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_CONSTARINT_TYPE (1)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE (1)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[temp_ORDINAL_POSITION (1)]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION (1)"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION (1)]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_TABLE_CATALOG == [temp_TABLE_CATALOG (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 2]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 2"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_TABLE_SCHEMA == [temp_TABLE_SCHEMA (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 3]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 3"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_TABLE_NAME == [temp_TABLE_NAME (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 4]"
+                  description="Output 4 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 4"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_COLUMN_NAME == [temp_COLUMN_NAME (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">3</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 5]"
+                  description="Output 5 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 5"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_DATA_TYPE == [temp_DATA_TYPE (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">4</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 6]"
+                  description="Output 6 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 6"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_CONSTRATINT_NAME == [temp_CONSTRATINT_NAME (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">5</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 7]"
+                  description="Output 7 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 7"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_CONSTARINT_TYPE == [temp_CONSTARINT_TYPE (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">6</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 8]"
+                  description="Output 8 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 8"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION (1)]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_ORDINAL_POSITION == [temp_ORDINAL_POSITION (1)]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">7</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 9]"
+                  description="Output 9 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 9"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]} == "DescripancyTempDBMetaData"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">temp_TABLE_NAME == "DescripancyTempDBMetaData"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">8</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 10]"
+                  description="Output 10 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Case 10"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME (1)]} == #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">[temp_CONSTRATINT_NAME (1)] == temp_CONSTRATINT_NAME</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">9</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Dev Table"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Dev Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."TempDBMetaData"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Dev Table.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-ACAQJSUC.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-ACAQJSUC.AdventureWorks2019]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_CATALOG]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_SCHEMA]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_COLUMN_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_DATA_TYPE]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_ORDINAL_POSITION]"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_CATALOG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_SCHEMA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_COLUMN_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_DATA_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTRATINT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTARINT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].ExternalColumns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      name="temp_ORDINAL_POSITION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">8</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_COLUMN_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_DATA_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      cachedSortKeyPosition="7"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      cachedSortKeyPosition="8"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_COLUMN_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_DATA_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      cachedSortKeyPosition="7"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      cachedSortKeyPosition="8"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_CATALOG]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_SCHEMA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_TABLE_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_COLUMN_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_DATA_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_CONSTRATINT_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_CONSTARINT_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[temp_ORDINAL_POSITION]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_CATALOG (1)]"
+                      name="temp_TABLE_CATALOG (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_CATALOG]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_SCHEMA (1)]"
+                      name="temp_TABLE_SCHEMA (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_SCHEMA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_TABLE_NAME (1)]"
+                      name="temp_TABLE_NAME (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_TABLE_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_COLUMN_NAME (1)]"
+                      name="temp_COLUMN_NAME (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_COLUMN_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_DATA_TYPE (1)]"
+                      name="temp_DATA_TYPE (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_DATA_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTRATINT_NAME (1)]"
+                      name="temp_CONSTRATINT_NAME (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_CONSTRATINT_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE (1)]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_CONSTARINT_TYPE (1)]"
+                      name="temp_CONSTARINT_TYPE (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_CONSTARINT_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION (1)]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[temp_ORDINAL_POSITION (1)]"
+                      name="temp_ORDINAL_POSITION (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[temp_ORDINAL_POSITION]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Prod Table"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Prod Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."TempDBMetaData"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Prod Table.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-ACAQJSUC\MULTIDIMENSIONAL.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-ACAQJSUC\MULTIDIMENSIONAL.AdventureWorks2019]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_CATALOG]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_SCHEMA]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_COLUMN_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_DATA_TYPE]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_ORDINAL_POSITION]"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_CATALOG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_SCHEMA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_TABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_COLUMN_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_DATA_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTRATINT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      name="temp_CONSTARINT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].ExternalColumns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      name="temp_ORDINAL_POSITION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      lineageId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">8</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_TABLE_CATALOG]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_CATALOG"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_TABLE_SCHEMA]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_SCHEMA"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_TABLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_TABLE_NAME"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_COLUMN_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_COLUMN_NAME"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_DATA_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_DATA_TYPE"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_CONSTRATINT_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTRATINT_NAME"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_CONSTARINT_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="temp_CONSTARINT_TYPE"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[temp_ORDINAL_POSITION]"
+                      cachedDataType="i4"
+                      cachedName="temp_ORDINAL_POSITION"
+                      lineageId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">8</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_CATALOG]"
+                      name="temp_TABLE_CATALOG"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_CATALOG]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_SCHEMA]"
+                      name="temp_TABLE_SCHEMA"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_SCHEMA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_TABLE_NAME]"
+                      name="temp_TABLE_NAME"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_TABLE_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_COLUMN_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_COLUMN_NAME]"
+                      name="temp_COLUMN_NAME"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_COLUMN_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_DATA_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_DATA_TYPE]"
+                      name="temp_DATA_TYPE"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_DATA_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTRATINT_NAME]"
+                      name="temp_CONSTRATINT_NAME"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTRATINT_NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_CONSTARINT_TYPE]"
+                      name="temp_CONSTARINT_TYPE"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_CONSTARINT_TYPE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[temp_ORDINAL_POSITION]"
+                      name="temp_ORDINAL_POSITION"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output].Columns[temp_ORDINAL_POSITION]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\Dev Table.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output1]"
+              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\Prod Table.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Conditional Split Default Output]"
+              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Conditional Split Default Output"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T-SQL Statement Task"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{420D57DD-37BD-44AB-933B-E9CBAA8554C9}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T-SQL Statement Task"
+      DTS:TaskContact="Execute T-SQL Statement Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0C1E84D9-A1E7-4B3D-A62B-DB440149535A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DescripancyTempDBMetaData"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{70C62E89-D94A-4095-9780-12246E1724DC}"
+      DTS:From="Package\Execute T-SQL Statement Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="76.2142869185429,127.088236999347" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Execute T-SQL Statement Task"
+          TopLeft="35.5,35.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="149.657143459271,77.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.9882369993467"
+              Start="0,0"
+              End="0,42.4882369993467">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.4882369993467" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Data Flow Task\Dev Table"
+          TopLeft="276.954545454546,52.5303030303031" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Data Flow Task\Prod Table"
+          TopLeft="564.241258741259,54.520979020979" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="331.428571428572,145" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Data Flow Task\Sort 1"
+          TopLeft="572.307692307692,133.461538461538" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="339.754545454546,94.1303030303031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.0740259740259,50.8696969696969"
+              Start="0,0"
+              End="48.0740259740259,43.3696969696969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4348484848485" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4348484848485"
+                    Point2="0,25.4348484848485"
+                    Point3="4,25.4348484848485" />
+                  <mssgle:LineSegment
+                    End="44.0740259740259,25.4348484848485" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.0740259740259,25.4348484848485"
+                    Point2="48.0740259740259,25.4348484848485"
+                    Point3="48.0740259740259,29.4348484848485" />
+                  <mssgle:LineSegment
+                    End="48.0740259740259,43.3696969696969" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output1]"
+          TopLeft="627.074475524475,96.120979020979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.3405594405594"
+              Start="0,0"
+              End="0,29.8405594405594">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8405594405594" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Data Flow Task\Merge Join"
+          TopLeft="474.730769230769,210.115384615385" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="387.828571428571,186.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131.435531135531,23.5153846153846"
+              Start="0,0"
+              End="131.435531135531,16.0153846153846">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.93716697936212" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.93716697936212"
+                    Point2="0,13.9371669793621"
+                    Point3="4,13.9371669793621" />
+                  <mssgle:LineSegment
+                    End="127.435531135531,13.9371669793621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127.435531135531,13.9371669793621"
+                    Point2="131.435531135531,13.9371669793621"
+                    Point3="131.435531135531,17.9371669793621" />
+                  <mssgle:LineSegment
+                    End="131.435531135531,16.0153846153846" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="625.507692307692,175.061538461538">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-65.7102564102564,35.0538461538462"
+              Start="0,0"
+              End="-65.7102564102564,27.5538461538462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7758161350845" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7758161350845"
+                    Point2="0,20.7758161350845"
+                    Point3="-4,20.7758161350845" />
+                  <mssgle:LineSegment
+                    End="-61.7102564102564,20.7758161350845" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61.7102564102564,20.7758161350845"
+                    Point2="-65.7102564102564,20.7758161350845"
+                    Point3="-65.7102564102564,24.7758161350845" />
+                  <mssgle:LineSegment
+                    End="-65.7102564102564,27.5538461538462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Data Flow Task\ADO NET Destination"
+          TopLeft="443.333333333333,400.166666666667" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="467.166666666667,310.052166377816" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="541.948717948718,251.715384615385">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.3367817624316"
+              Start="0,0"
+              End="0,50.8367817624316">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.8367817624316" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Conditional Split Default Output]"
+          TopLeft="544.366666666667,351.652166377816">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.8333333333334,48.5145002888505"
+              Start="0,0"
+              End="-11.8333333333334,41.0145002888505">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2572501444252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2572501444252"
+                    Point2="0,24.2572501444252"
+                    Point3="-4,24.2572501444252" />
+                  <mssgle:LineSegment
+                    End="-7.83333333333337,24.2572501444252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.83333333333337,24.2572501444252"
+                    Point2="-11.8333333333334,24.2572501444252"
+                    Point3="-11.8333333333334,28.2572501444252" />
+                  <mssgle:LineSegment
+                    End="-11.8333333333334,41.0145002888505" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-76.5305729166667,29.2572501444252,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Dev Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Prod Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
